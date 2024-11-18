@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://yrp732c8cqd6"]
+[gd_scene load_steps=29 format=3 uid="uid://yrp732c8cqd6"]
 
 [ext_resource type="Texture2D" uid="uid://dma340qws6tbh" path="res://assets/grass.png" id="1_s76n4"]
 [ext_resource type="Shader" uid="uid://haxlv4qpsra1" path="res://shaders/color_replacement_simple.tres" id="4_cmadp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://shaders/color_replacement.gdshader" id="6_3t41n"]
 [ext_resource type="Texture2D" uid="uid://cayokb6mbipke" path="res://assets/knight.png" id="6_mcy8b"]
 [ext_resource type="Script" path="res://scripts/knight_color_code.gd" id="7_ebutr"]
+[ext_resource type="Script" path="res://scripts/color_picker_button.gd" id="8_1dvnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bax0a"]
 shader = ExtResource("4_cmadp")
@@ -137,7 +138,8 @@ shader_parameter/replacement_color = Color(0.732162, 0.000553119, 0.760838, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_70626"]
 shader = ExtResource("6_3t41n")
-shader_parameter/replacement_color = Color(1, 0.233503, 0.425499, 1)
+shader_parameter/cape_color = Color(0.0392157, 0.439216, 0.188235, 1)
+shader_parameter/feather_color = Color(0.823529, 0.12549, 0.172549, 1)
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.999249, 1)
@@ -154,7 +156,7 @@ position = Vector2(470.353, 229.055)
 scale = Vector2(9.50344, 9.50344)
 sprite_frames = SubResource("SpriteFrames_1qeba")
 autoplay = "default"
-frame_progress = 0.683169
+frame_progress = 0.999379
 
 [node name="KnightColor" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -163,7 +165,7 @@ position = Vector2(711.193, 229.055)
 scale = Vector2(9.54158, 9.50344)
 sprite_frames = SubResource("SpriteFrames_1qeba")
 autoplay = "default"
-frame_progress = 0.781729
+frame_progress = 0.0978046
 script = ExtResource("5_iokjd")
 
 [node name="KnightColorCode" type="AnimatedSprite2D" parent="."]
@@ -173,14 +175,35 @@ position = Vector2(955.718, 229.055)
 scale = Vector2(9.50344, 9.50344)
 sprite_frames = SubResource("SpriteFrames_1qeba")
 autoplay = "default"
-frame_progress = 0.642619
+frame_progress = 0.958947
 script = ExtResource("7_ebutr")
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 offset_right = 298.0
 offset_bottom = 576.0
-color = Color(0.54902, 0.54902, 0.54902, 1)
+color = Color(0.176471, 0.196078, 0.219608, 1)
 edit_alpha = false
 
+[node name="FeatherColorPicker" type="ColorPickerButton" parent="."]
+offset_left = 821.617
+offset_top = 172.0
+offset_right = 871.617
+offset_bottom = 222.0
+color = Color(0.823529, 0.12549, 0.172549, 1)
+edit_alpha = false
+script = ExtResource("8_1dvnj")
+
+[node name="CapeColorPicker" type="ColorPickerButton" parent="."]
+offset_left = 821.617
+offset_top = 266.0
+offset_right = 871.617
+offset_bottom = 316.0
+color = Color(0.0392157, 0.439216, 0.188235, 1)
+edit_alpha = false
+script = ExtResource("8_1dvnj")
+
 [connection signal="color_changed" from="ColorPicker" to="KnightColor" method="_on_color_picker_color_changed"]
-[connection signal="color_changed" from="ColorPicker" to="KnightColorCode" method="_on_color_picker_color_changed"]
+[connection signal="color_changed" from="FeatherColorPicker" to="KnightColorCode" method="_on_feather_color_picker_color_changed"]
+[connection signal="picker_created" from="FeatherColorPicker" to="FeatherColorPicker" method="_on_picker_created"]
+[connection signal="color_changed" from="CapeColorPicker" to="KnightColorCode" method="_on_cape_color_picker_color_changed"]
+[connection signal="picker_created" from="CapeColorPicker" to="CapeColorPicker" method="_on_picker_created"]
