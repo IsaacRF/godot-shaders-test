@@ -9,3 +9,6 @@
 ## Vertex shaders
 ![Demo_shaders](https://github.com/user-attachments/assets/6fdecd9f-ce1f-43f5-b514-a8e1b44396b3)
 <img width="1287" alt="image" src="https://github.com/user-attachments/assets/23d7870b-6834-4d1e-8d06-41444475ab3b">
+
+### Credits
+- Knight was created by [Kevin's Mom's House](https://x.com/KMHStudios_) as part of the [camelot_ asset pack](https://kevins-moms-house.itch.io/camelot)
