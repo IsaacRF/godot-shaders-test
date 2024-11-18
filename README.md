@@ -1,5 +1,7 @@
 # Godot Shaders Test
- A Godot test project for experimenting with Shaders
+ <img width="135" alt="Captura de pantalla 2024-11-18 200812" src="https://github.com/user-attachments/assets/ad83494e-0318-4bf9-9c6c-e090937162e9">
+
+ A shaders experiment test project made in Godot engine
 
 ## Fragment shaders
 ![Demo_fragment_shaders](https://github.com/user-attachments/assets/402c752a-d2ce-4f6e-beb0-8138d25f0e17)
